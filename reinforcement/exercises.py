@@ -27,11 +27,16 @@ def minmax(data):
             maximum = i
     return minimum, maximum
 
-def 
+def sum_squares(n):
+    """ Return the sum of the squares of all the positive integers smaller than n."""
+    return sum([i * i for i in range(n)])
 
 if __name__ == '__main__':
     a = [1, 3, 4, 5, -7, 4]
     b = [5, 6, 100, 100, -6, -1000]
     print(minmax(a))
     print(minmax(b))
+
+    for i in range(10):
+        print(sum_squares(i))
     
