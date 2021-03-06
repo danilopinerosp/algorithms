@@ -31,6 +31,10 @@ def sum_squares(n):
     """ Return the sum of the squares of all the positive integers smaller than n."""
     return sum([i * i for i in range(n)])
 
+def sum_squares_odd(n):
+    """ Return the sum of the squares of all the odd positive integers smaller than n. """
+    return sum([i * i  for i in range(n) if i % 2 != 0])
+
 if __name__ == '__main__':
     a = [1, 3, 4, 5, -7, 4]
     b = [5, 6, 100, 100, -6, -1000]
@@ -38,5 +42,5 @@ if __name__ == '__main__':
     print(minmax(b))
 
     for i in range(10):
-        print(sum_squares(i))
+        print(sum_squares_odd(i))
     
