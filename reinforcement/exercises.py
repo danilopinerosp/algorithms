@@ -52,18 +52,26 @@ def own_reverse(data):
     return reverse_list
 
 def pair_odd_product(data):
-    """ Return True if there is distinct pair of values in the sequence whose product is odd. """
+    """ Return True if there is distinct pair of values in the sequence whose product is odd, and False otherwise.. """
     for i in range(len(data)):
-        for j in range(i, len(data)):
+        for j in range(i + 1, len(data)):
             if (data[i] * data[j]) % 2 != 0:
                 return True
     return False
 
+def distinct_numbers(data):
+    """ Return True if all the numbers in the sequence data are different from each other, and False otherwise. """
+    for i in range(len(data)):
+        for j in range(i + 1, len(data)):
+            if data[i] == data[j]:
+                return False
+    return True
+
 if __name__ == '__main__':
 
-    d = [1, 2, 3, 4, 5]
+    d = [1, 2, 3, 4, 5, 2]
     c = [2, 4, 6]
-    print(pair_odd_product(d))
-    print(pair_odd_product(c))
+    print(distinct_numbers(d))
+    print(distinct_numbers(c))
     
     
