@@ -51,10 +51,19 @@ def own_reverse(data):
         reverse_list.append(data[i])
     return reverse_list
 
+def pair_odd_product(data):
+    """ Return True if there is distinct pair of values in the sequence whose product is odd. """
+    for i in range(len(data)):
+        for j in range(i, len(data)):
+            if (data[i] * data[j]) % 2 != 0:
+                return True
+    return False
+
 if __name__ == '__main__':
 
     d = [1, 2, 3, 4, 5]
-    b = own_reverse(d)
-    print(b)
+    c = [2, 4, 6]
+    print(pair_odd_product(d))
+    print(pair_odd_product(c))
     
     
