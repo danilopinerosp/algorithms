@@ -44,11 +44,17 @@ def own_choice(data):
     idx = randrange(0, len(data))
     return data[idx]
 
+def own_reverse(data):
+    """ Return the integers of data in reverse order. """
+    reverse_list = []
+    for i in range(len(data) - 1, -1, -1):
+        reverse_list.append(data[i])
+    return reverse_list
+
 if __name__ == '__main__':
 
-    data = [1, 3, 5, 2, 7, 'hola', 'nana']
-    dat = []
-    print(own_choice(dat))
-    for i in range(5):
-        print(own_choice(data))
+    d = [1, 2, 3, 4, 5]
+    b = own_reverse(d)
+    print(b)
+    
     
