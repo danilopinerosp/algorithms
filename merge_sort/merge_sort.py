@@ -24,7 +24,7 @@ def merge(C, D):
 
 def merge_sort(A):
     """ Return a list with the same integers sorted from smallest to largest"""
-    if len(A) == 1:
+    if len(A) <= 1:
         return A
     else:
         n_2 = len(A) // 2
