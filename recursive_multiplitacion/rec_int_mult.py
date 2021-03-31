@@ -1,36 +1,47 @@
 #!/usr/bin/env python3
 
-import sys
+def rec_int_mult(x, y=0):
+    """Return the multiplication between x and y using recursive algorithm."""
+    (sign_x, sign_y) = (1, 1)
 
-def rec_int_mult(x, y):
-    """Return the multiplication between x and y"""
-    x = str(x)
-    y = str(y)
-    nx = len(x)
-    ny = len(y)
-    if nx > ny:
-        y = '0' * (nx - ny) + y
-    elif ny > nx:
-        x = '0' * (ny - nx) + x
+    # Enable multipliaction of negative numbers
+    if x < 0:
+        sign_x = -1
+        x = x * sign_x
+    if y < 0:
+        sign_y = -1
+        y = y * sign_y
 
-    n = len(x)
-    if n == 1:
-        return int(x) * int(y)
+    # sign of the final result
+    sign = sign_x * sign_y
+
+    #  Numver of digits of both numers (x, y)
+    size_x = len(str(x))
+    size_y = len(str(y))
+
+    # Difference between the digits of both numbers
+    delta = abs(size_x - size_y)
+
+    n = max(size_x, size_y)
+
+    if size_x == 1 or size_y == 1:
+        return x * y
     else:
-        a = x[0: n // 2]
-        b = x[n // 2 : n]
-        c = y[0: n // 2]
-        d = y[n // 2: n]
+        a = x // 10 ** (size_x // 2)      # First half of x
+        b = x - a * 10 ** ( size_x // 2)  # Second half of x
+        c = y // 10 ** (size_y // 2)     # First half of y
+        d = y - c * 10 ** (size_y // 2)   # Second half of y
         ac = rec_int_mult(a, c)
         ad = rec_int_mult(a, d)
         bc = rec_int_mult(b, c)
         bd = rec_int_mult(b, d)
-        return 10 ** n * ac + 10 ** (n // 2) * (ad + bc) + bd
+        result = (10 ** (n - delta)) * ac + (10 ** (n // 2)) * (ad + bc) + bd
+        return result * sign
+
+if __name__  == '__main__':
+    import sys
+    x = int(sys.argv[1])
+    y = int(sys.argv[2])
+    result = rec_int_mult(x, y)
+    print('{} * {} = {}'.format(x, y, result))
         
-
-x = sys.argv[1]
-y = sys.argv[2]
-
-multiplication = rec_int_mult(x, y)
-
-print(multiplication)
